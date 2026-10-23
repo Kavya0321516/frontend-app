@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart - ShopWave</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="store.css" />
+  <link rel="stylesheet" href="cart.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="store.html" class="brand-logo">
+        <span class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </span>
+        <span>ShopWave</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="store.html" class="nav-link">
+              <span>Store</span>
+            </a>
+          </li>
+          <li>
+            <a href="cart.html" class="nav-link cart-nav-link active" id="navCartLink">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Cart</span>
+              <span class="cart-badge-count" style="display: none;">0</span>
+            </a>
+          </li>
+          <li>
+            <span class="user-badge" id="userGreeting">Hi, Shopper!</span>
+          </li>
+          <li>
+            <button class="logout-btn" title="Sign out of your account">Logout</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Cart Content Container -->
+  <main class="cart-page-container">
+    <!-- Cart Header -->
+    <div class="cart-header">
+      <h1 class="cart-title">Your Shopping Cart</h1>
+      <button id="clearCartBtn" class="clear-cart-btn" style="display: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        </svg>
+        <span>Clear All Items</span>
+      </button>
+    </div>
+
+    <!-- Active Cart Layout (Hidden when empty) -->
+    <div class="cart-layout" id="cartLayout">
+      <!-- Items List -->
+      <section class="cart-items-card" id="cartItemsList">
+        <!-- Rendered via cart.js -->
+      </section>
+
+      <!-- Order Summary Card -->
+      <aside class="order-summary-card" id="orderSummaryCard">
+        <h2 class="summary-title">Order Summary</h2>
+
+        <div class="summary-row">
+          <span>Subtotal (<span id="summaryItemCount">0</span> items)</span>
+          <span id="summarySubtotal">$0.00</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Estimated Shipping</span>
+          <span class="free-badge" id="summaryShipping">FREE</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Estimated Sales Tax (6%)</span>
+          <span id="summaryTax">$0.00</span>
+        </div>
+
+        <div class="summary-row total-row">
+          <span>Estimated Total</span>
+          <span id="summaryTotal">$0.00</span>
+        </div>
+
+        <button id="proceedToCheckoutBtn" class="checkout-btn">
+          <span>Proceed to Checkout</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+        <a href="store.html" class="continue-shopping-link">&larr; Continue Shopping</a>
+      </aside>
+    </div>
+
+    <!-- Empty Cart View (Shown when cart is empty) -->
+    <div class="empty-cart-view" id="emptyCartView" style="display: none;">
+      <div class="empty-cart-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+      </div>
+      <h2 class="empty-cart-title">Your cart is empty</h2>
+      <p class="empty-cart-desc">Looks like you haven't added anything to your cart yet. Explore our trending products and discover great deals.</p>
+      <a href="store.html" class="start-shopping-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Start Shopping</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 ShopWave Online Store. All demo products and images for preview purposes.</p>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

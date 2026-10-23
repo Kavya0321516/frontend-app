@@ -1,0 +1,407 @@
+/* ==========================================================================
+   Modern & Responsive User Registration Stylesheet (style.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens (CSS Variables)
+   -------------------------------------------------------------------------- */
+:root {
+  --primary-color: #4f46e5;         /* Indigo primary */
+  --primary-hover: #4338ca;         /* Darker indigo on hover */
+  --primary-light: #eef2ff;         /* Very light indigo background */
+  --text-main: #1f2937;             /* Charcoal for body text */
+  --text-muted: #6b7280;            /* Gray for secondary text */
+  --border-color: #d1d5db;          /* Neutral input border */
+  --border-focus: #4f46e5;          /* Focus border color */
+  --focus-ring: rgba(79, 70, 229, 0.2);
+  
+  --error-color: #dc2626;           /* Crimson red for errors */
+  --error-bg: #fef2f2;              /* Light red error alert bg */
+  --error-border: #fecaca;          /* Light red alert border */
+
+  --success-color: #16a34a;         /* Emerald green for success */
+  --success-bg: #f0fdf4;            /* Light green alert bg */
+  --success-border: #bbf7d0;        /* Light green alert border */
+
+  --card-bg: #ffffff;
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --radius: 12px;
+  --transition: all 0.2s ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Reset & Base Typography
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Page Wrapper & Card Container
+   -------------------------------------------------------------------------- */
+.page-wrapper {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 36px 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* --------------------------------------------------------------------------
+   4. Header Section
+   -------------------------------------------------------------------------- */
+.card-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  margin-bottom: 14px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   5. Alert Banner (Success & Global Error)
+   -------------------------------------------------------------------------- */
+.alert {
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.alert.success {
+  background-color: var(--success-bg);
+  border-color: var(--success-border);
+  color: var(--success-color);
+}
+
+.alert.error {
+  background-color: var(--error-bg);
+  border-color: var(--error-border);
+  color: var(--error-color);
+}
+
+.alert.hidden {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. Form & Inputs
+   -------------------------------------------------------------------------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: #fff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: var(--transition);
+}
+
+/* Extra right padding for inputs with an action button (like password toggle) */
+#passwordGroup input {
+  padding-right: 42px;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+/* Focused input state */
+input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Validation states on form groups */
+.form-group.has-error input {
+  border-color: var(--error-color);
+  background-color: #fff9f9;
+}
+
+.form-group.has-error input:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.form-group.has-success input {
+  border-color: var(--success-color);
+}
+
+/* Error message label */
+.error-message {
+  font-size: 0.775rem;
+  color: var(--error-color);
+  margin-top: 5px;
+  min-height: 16px;
+  display: block;
+}
+
+/* Helper text below password */
+.helper-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Password Show/Hide Toggle Button
+   -------------------------------------------------------------------------- */
+.toggle-password-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.toggle-password-btn:hover {
+  color: var(--text-main);
+}
+
+.toggle-password-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+}
+
+.icon.hidden {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   8. Submit Button
+   -------------------------------------------------------------------------- */
+.submit-btn {
+  margin-top: 6px;
+  width: 100%;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Footer Links
+   -------------------------------------------------------------------------- */
+.card-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.guest-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.guest-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* Demo fill button */
+.demo-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background-color: var(--primary-light);
+  border: 1px dashed var(--primary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.demo-btn:hover {
+  background-color: #e0e7ff;
+}
+
+/* Toast notifications */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: #1f2937;
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.toast-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-success .toast-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: #10b981;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   10. Responsiveness (Mobile screens)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  body {
+    padding: 14px;
+  }
+
+  .card {
+    padding: 26px 20px;
+  }
+
+  .card-title {
+    font-size: 1.35rem;
+  }
+
+  .toast-container {
+    right: 14px;
+    left: 14px;
+    bottom: 14px;
+  }
+}
+

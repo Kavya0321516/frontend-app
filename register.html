@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - ShopWave</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Registration Card -->
+    <main class="card">
+      <!-- Card Header -->
+      <header class="card-header">
+        <div class="brand-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <line x1="19" y1="8" x2="19" y2="14" />
+            <line x1="22" y1="11" x2="16" y2="11" />
+          </svg>
+        </div>
+        <h1 class="card-title">Create an Account</h1>
+        <p class="card-subtitle">Sign up to start shopping your favorite products.</p>
+      </header>
+
+      <!-- Global Alert Box -->
+      <div id="alertBox" class="alert hidden" role="alert" aria-live="polite"></div>
+
+      <!-- Registration Form -->
+      <form id="registrationForm" novalidate>
+        <!-- Full Name Field -->
+        <div class="form-group" id="fullNameGroup">
+          <label for="fullName">Full Name</label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              placeholder="e.g. Jane Doe"
+              autocomplete="name"
+            />
+          </div>
+          <small class="error-message" id="fullNameError"></small>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group" id="emailGroup">
+          <label for="email">Email Address</label>
+          <div class="input-wrapper">
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="jane.doe@example.com"
+              autocomplete="email"
+            />
+          </div>
+          <small class="error-message" id="emailError"></small>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group" id="passwordGroup">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="At least 8 characters"
+              autocomplete="new-password"
+            />
+            <!-- Show/Hide Password Toggle Button -->
+            <button 
+              type="button" 
+              id="togglePasswordBtn" 
+              class="toggle-password-btn" 
+              aria-label="Toggle password visibility"
+              title="Toggle password visibility"
+            >
+              <svg id="eyeIcon" class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg id="eyeSlashIcon" class="icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <small class="error-message" id="passwordError"></small>
+          <small class="helper-text">Must be at least 8 characters and include both letters and numbers.</small>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" class="submit-btn">
+          <span>Create Account</span>
+        </button>
+      </form>
+
+      <!-- Footer Link to Sign In -->
+      <footer class="card-footer">
+        <p>Already have an account? <a href="index.html" class="link">Sign In</a></p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="products.js"></script>
+  <script src="register.js"></script>
+</body>
+</html>
